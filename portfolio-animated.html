@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Samarpan Behera - Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      color: #333;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+      padding: 0 15px;
+      page-break-after: always;
+    }
+
+    .page {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      min-height: 90vh;
+      box-sizing: border-box;
+    }
+
+    /* First Page Styles with Animations */
+    .first-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      page-break-after: always;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: scale(0.5) rotate(-180deg);
+      animation: photoAppear 1.5s ease-out 0.5s forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.1);
+    }
+
+    .name {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s ease-out 1.2s forwards;
+    }
+
+    .contact-info {
+      font-size: 1.1em;
+      color: #2980b9;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 1s ease-out 1.8s forwards;
+    }
+
+    .contact-info a {
+      color: #2980b9;
+      text-decoration: none;
+      margin: 0 10px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #1abc9c;
+      text-decoration: none;
+    }
+
+    .contact-info a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #1abc9c;
+      transition: width 0.3s ease;
+    }
+
+    .contact-info a:hover::after {
+      width: 100%;
+    }
+
+    /* Second Page Styles with Animations */
+    .second-page {
+      page-break-before: always;
+    }
+
+    section {
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    h2 {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #1abc9c, #3498db);
+      animation: slideInBorder 0.8s ease-out forwards;
+    }
+
+    .subheading {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .subheading:hover {
+      color: #2980b9;
+    }
+
+    .small-text {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: listItemAppear 0.5s ease-out forwards;
+    }
+
+    li:nth-child(1) { animation-delay: 0.1s; }
+    li:nth-child(2) { animation-delay: 0.2s; }
+    li:nth-child(3) { animation-delay: 0.3s; }
+    li:nth-child(4) { animation-delay: 0.4s; }
+    li:nth-child(5) { animation-delay: 0.5s; }
+
+    li:hover {
+      transform: translateX(5px);
+      transition: transform 0.3s ease;
+    }
+
+    /* Keyframe Animations */
+    @keyframes photoAppear {
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInBorder {
+      to {
+        left: 0;
+      }
+    }
+
+    @keyframes listItemAppear {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Hover Effects */
+    section:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .profile-photo {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 15px;
+      }
+      .name {
+        font-size: 2em;
+        margin-bottom: 8px;
+      }
+      .contact-info {
+        font-size: 1em;
+        margin-bottom: 20px;
+      }
+      body {
+        padding: 0 10px;
+      }
+      .page {
+        padding: 20px 25px;
+      }
+    }
+
+    /* Loading Animation */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #2980b9;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- FIRST PAGE -->
+  <div class="page first-page">
+    <img src="https://via.placeholder.com/180x180/2980b9/ffffff?text=SP" alt="Samarpan Behera Photo" class="profile-photo floating" />
+    <div class="name">Samarpan Behera</div>
+    <div class="contact-info">
+      <span>8260251550</span> | 
+      <a href="mailto:beherasamarpan@gmail.com">beherasamarpan@gmail.com</a> | 
+      <span>Burla, Odisha</span>
+    </div>
+  </div>
+
+  <!-- SECOND PAGE -->
+  <div class="page second-page">
+    <section id="about" class="animated-section">
+      <h2>About Me</h2>
+      <p>Motivated final-year B.Tech Computer Science student at SUIIT Burla with strong programming skills in Java, Python, and web technologies, seeking an internship or entry-level role to apply technical knowledge, problem-solving skills, and passion for software development.</p>
+    </section>
+
+    <section id="education" class="animated-section">
+      <h2>Education</h2>
+      <div>
+        <p class="subheading">Sambalpur University Institute of Information Technology (SUIIT), Burla, Odisha</p>
+        <p class="small-text">B.Tech in Computer Science and Engineering (Nov 2022 – Jun 2026)</p>
+        <p>CGPA: <strong>7.8</strong> (Till 7th semester)</p>
+      </div>
+      <div>
+        <p class="subheading">Gurukul Public School, Jajpur, Odisha</p>
+        <p class="small-text">Intermediate (Class XII), CBSE (2020 – 2022)</p>
+        <p>Percentage: <strong>79%</strong></p>
+      </div>
+    </section>
+
+    <section id="skills" class="animated-section">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Programming Languages:</strong> Java, Python, C, HTML, CSS</li>
+        <li><strong>Web Technologies:</strong> JavaScript, React, Node.js</li>
+        <li><strong>Tools & Platforms:</strong> Git, Linux, MySQL, VS Code</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="animated-section">
+      <h2>Contact Me</h2>
+      <p>Phone: 8260251550</p>
+      <p>Email: <a href="mailto:beherasamarpan@gmail.com">beherasamarpan@gmail.com</a></p>
+      <p>Location: Burla, Odisha, India</p>
+    </section>
+  </div>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+      }, 1500);
+    });
+
+    // Scroll animations for second page
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
+      );
+    }
+
+    function checkAnimation() {
+      const sections = document.querySelectorAll('.animated-section');
+      sections.forEach((section, index) => {
+        if (isInViewport(section)) {
+          setTimeout(() => {
+            section.classList.add('visible');
+          }, index * 200);
+        }
+      });
+    }
+
+    // Trigger animations on scroll and load
+    window.addEventListener('scroll', checkAnimation);
+    window.addEventListener('load', () => {
+      setTimeout(checkAnimation, 2000); // After loading screen
+    });
+
+    // Add pulse animation to elements on click
+    document.addEventListener('click', function(e) {
+      e.target.style.animation = 'pulse 0.5s ease';
+      setTimeout(() => {
+        e.target.style.animation = '';
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
