@@ -489,8 +489,8 @@ textarea.form-control {
   font-size: var(--font-size-base);
 }
 .profile-photo img {
-    width: 80px; /* adjust size */
-    height: 80px;
+    width: 150px; /* adjust size */
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -835,8 +835,8 @@ body {
 
 /* Profile Photo */
 .profile-photo {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: linear-gradient(135deg, #2c3e50 0%, #2980b9 100%);
     display: flex;
