@@ -488,6 +488,12 @@ textarea.form-control {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
 }
+.profile-photo img {
+    width: 80px; /* adjust size */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
 select.form-control {
   padding: var(--space-8) var(--space-12);
